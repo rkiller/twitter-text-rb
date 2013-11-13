@@ -7,9 +7,10 @@ module Twitter
   # A module for including Tweet auto-linking in a class. The primary use of this is for helpers/views so they can auto-link
   # usernames, lists, hashtags and URLs.
   module Autolink extend self
-    # Default CSS class for auto-linked lists
-    DEFAULT_LIST_CLASS = "tweet-url list-slug".freeze
-    # Default CSS class for auto-linked usernames
+  	if Rails.env.production?
+  		# Default CSS class for auto-linked lists
+        DEFAULT_LIST_CLASS = "tweet-url list-slug".freeze
+        # Default CSS class for auto-linked usernames
     DEFAULT_USERNAME_CLASS = "tweet-url username".freeze
     # Default CSS class for auto-linked hashtags
     DEFAULT_HASHTAG_CLASS = "tweet-url hashtag".freeze
@@ -27,6 +28,30 @@ module Twitter
 
     # Default attributes for invisible span tag
     DEFAULT_INVISIBLE_TAG_ATTRS = "style='position:absolute;left:-9999px;'".freeze
+
+  	else
+
+    # Default CSS class for auto-linked lists
+    DEFAULT_LIST_CLASS = "tweet-url list-slug".freeze
+    # Default CSS class for auto-linked usernames
+    DEFAULT_USERNAME_CLASS = "tweet-url username".freeze
+    # Default CSS class for auto-linked hashtags
+    DEFAULT_HASHTAG_CLASS = "tweet-url hashtag".freeze
+    # Default CSS class for auto-linked cashtags
+    DEFAULT_CASHTAG_CLASS = "tweet-url cashtag".freeze
+
+    # Default URL base for auto-linked usernames
+    DEFAULT_USERNAME_URL_BASE = "https://localhost:3000/search?search=%user&".freeze
+    # Default URL base for auto-linked lists
+    DEFAULT_LIST_URL_BASE = "https://localhost:3000/".freeze
+    # Default URL base for auto-linked hashtags
+    DEFAULT_HASHTAG_URL_BASE = "https://localhost:3000/search?search=%hashtag&".freeze
+    # Default URL base for auto-linked cashtags
+    DEFAULT_CASHTAG_URL_BASE = "https://localhost:3000/search?search=%cashtag&".freeze
+
+    # Default attributes for invisible span tag
+    DEFAULT_INVISIBLE_TAG_ATTRS = "style='position:absolute;left:-9999px;'".freeze
+    end
 
     DEFAULT_OPTIONS = {
       :list_class     => DEFAULT_LIST_CLASS,
