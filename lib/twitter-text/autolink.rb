@@ -17,7 +17,7 @@ module Twitter
     DEFAULT_CASHTAG_CLASS = "tweet-url cashtag".freeze
 
     # Default URL base for auto-linked usernames
-    DEFAULT_USERNAME_URL_BASE = "https://www.hedgesauce.com/search?search=username&".freeze
+    DEFAULT_USERNAME_URL_BASE = "https://www.hedgesauce.com/users/".freeze
     # Default URL base for auto-linked lists
     DEFAULT_LIST_URL_BASE = "https://www.hedgesauce.com/".freeze
     # Default URL base for auto-linked hashtags
